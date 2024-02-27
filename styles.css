@@ -942,7 +942,7 @@ section:nth-child(odd) .animate.scroll,
     }
 
     .home {
-        min-height: 90vh;
+        min-height: 100vh;
         position: relative;
     }
     
