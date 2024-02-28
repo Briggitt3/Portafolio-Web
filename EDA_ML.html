@@ -1,0 +1,1759 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.550">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>CAR SALES REPORT</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="EDA_ML_files/libs/clipboard/clipboard.min.js"></script>
+<script src="EDA_ML_files/libs/quarto-html/quarto.js"></script>
+<script src="EDA_ML_files/libs/quarto-html/popper.min.js"></script>
+<script src="EDA_ML_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="EDA_ML_files/libs/quarto-html/anchor.min.js"></script>
+<link href="EDA_ML_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="EDA_ML_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="EDA_ML_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="EDA_ML_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="EDA_ML_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><strong>CAR SALES REPORT</strong></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="car-sales-report" class="level1">
+
+<blockquote class="blockquote">
+<p>This Dataset contain data from Global Car Sales of each brand in market</p>
+</blockquote>
+<p><img src="/EDA_ML_files/images/cars.jpg" width="500"></p>
+<section id="goals-for-this-project" class="level3">
+<h3 class="anchored" data-anchor-id="goals-for-this-project"><strong>Goals for this Project:</strong></h3>
+<ul>
+<li><strong>Market Analysis:</strong> Evaluate overall trends and regional variations in car Sales to assess manufacturrer Performance, model preferences and demographic insights.</li>
+<li><strong>Forecasting and Predictive Analysis:</strong> Use historical Data for forecasting and predict future market trends. Support marketing, advertising, and investment decisions based on insights.</li>
+</ul>
+</section>
+<section id="table-of-content" class="level2">
+  <h2>Table of Contents:</h2>
+
+  <ol>
+    <li><strong>IMPORT LIBRARIES</strong>
+      <ul>
+        <li><a href="#step-1-import-libraries">Step 1.1: Import Libraries</a></li>
+      </ul>
+    </li>
+    <li><strong>LOAD THE DATASET</strong>
+      <ul>
+        <li><a href="#step-2-load-dataset">Step 2.1: Load the Dataset</a></li>
+      </ul>
+    </li>
+    <li><a href="#step-3-exploratory-data-analysis-eda"><strong>EXPLORATORY DATA ANALYSIS (EDA)</strong></a>
+      <ul>
+        <li><a href="#step-3.1-data-structure">Step 3.1: Data Structure</a></li>
+        <li><a href="#step-3.2-shape">Step 3.2: Data Shape</a></li>
+        <li><a href="#step-3.3-missing-values">Step 3.3: Missing Values</a></li>
+        <li><a href="#step-3.4-data-analysis">Step 3.4: Data Analysis</a>
+          <ul>
+            <li><a href="#step-3.4.1-customers">Customers</a></li>
+            <li><a href="#step-3.4.2-company-analysis">Company</a></li>
+            <li><a href="#step-3.4.3-product-analysis-cars-models-body-styles">Product</a></li>
+            <li><a href="#step-3.4.4-sales-analysis">Price &amp; Sales</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#step-4-predictive-model"><strong>PREDICTIVE MODEL</strong></a>
+      <ul>
+        <li><a href="#step-4.1-dummies-variables">Step 4.1: Dummies Variables</a></li>
+        <li><a href="#step-4.2-dates">Step 4.2: Dates</a></li>
+        <li><a href="#step-4.3-model">Step 4.3: Model</a></li>
+      </ul>
+    </li>
+  </ol>
+<section id="step-1-import-libraries" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-import-libraries"><strong>Step 1| Import Libraries</strong></h3>
+<div id="cell-5" class="cell" data-execution_count="75">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Importing Libreries</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#ignore warnings</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">'ignore'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="step-2-load-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-load-dataset"><strong>Step 2| Load Dataset</strong></h3>
+<div id="cell-7" class="cell" data-execution_count="76">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Loading Dataset</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'Car Sales.xlsx - car_data.csv'</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Show first 5 rows</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="76">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Car_id</th>
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Customer Name</th>
+<th data-quarto-table-cell-role="th">Gender</th>
+<th data-quarto-table-cell-role="th">Annual Income</th>
+<th data-quarto-table-cell-role="th">Dealer_Name</th>
+<th data-quarto-table-cell-role="th">Company</th>
+<th data-quarto-table-cell-role="th">Model</th>
+<th data-quarto-table-cell-role="th">Engine</th>
+<th data-quarto-table-cell-role="th">Transmission</th>
+<th data-quarto-table-cell-role="th">Color</th>
+<th data-quarto-table-cell-role="th">Price ($)</th>
+<th data-quarto-table-cell-role="th">Dealer_No</th>
+<th data-quarto-table-cell-role="th">Body Style</th>
+<th data-quarto-table-cell-role="th">Phone</th>
+<th data-quarto-table-cell-role="th">Dealer_Region</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>C_CND_000001</td>
+<td>1/2/2022</td>
+<td>Geraldine</td>
+<td>Male</td>
+<td>13500</td>
+<td>Buddy Storbeck's Diesel Service Inc</td>
+<td>Ford</td>
+<td>Expedition</td>
+<td>DoubleÂ&nbsp;Overhead Camshaft</td>
+<td>Auto</td>
+<td>Black</td>
+<td>26000</td>
+<td>06457-3834</td>
+<td>SUV</td>
+<td>8264678</td>
+<td>Middletown</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>C_CND_000002</td>
+<td>1/2/2022</td>
+<td>Gia</td>
+<td>Male</td>
+<td>1480000</td>
+<td>C &amp; M Motors Inc</td>
+<td>Dodge</td>
+<td>Durango</td>
+<td>DoubleÂ&nbsp;Overhead Camshaft</td>
+<td>Auto</td>
+<td>Black</td>
+<td>19000</td>
+<td>60504-7114</td>
+<td>SUV</td>
+<td>6848189</td>
+<td>Aurora</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>C_CND_000003</td>
+<td>1/2/2022</td>
+<td>Gianna</td>
+<td>Male</td>
+<td>1035000</td>
+<td>Capitol KIA</td>
+<td>Cadillac</td>
+<td>Eldorado</td>
+<td>Overhead Camshaft</td>
+<td>Manual</td>
+<td>Red</td>
+<td>31500</td>
+<td>38701-8047</td>
+<td>Passenger</td>
+<td>7298798</td>
+<td>Greenville</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>C_CND_000004</td>
+<td>1/2/2022</td>
+<td>Giselle</td>
+<td>Male</td>
+<td>13500</td>
+<td>Chrysler of Tri-Cities</td>
+<td>Toyota</td>
+<td>Celica</td>
+<td>Overhead Camshaft</td>
+<td>Manual</td>
+<td>Pale White</td>
+<td>14000</td>
+<td>99301-3882</td>
+<td>SUV</td>
+<td>6257557</td>
+<td>Pasco</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>C_CND_000005</td>
+<td>1/2/2022</td>
+<td>Grace</td>
+<td>Male</td>
+<td>1465000</td>
+<td>Chrysler Plymouth</td>
+<td>Acura</td>
+<td>TL</td>
+<td>DoubleÂ&nbsp;Overhead Camshaft</td>
+<td>Auto</td>
+<td>Red</td>
+<td>24500</td>
+<td>53546-9427</td>
+<td>Hatchback</td>
+<td>7081483</td>
+<td>Janesville</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<div id="cell-8" class="cell" data-execution_count="77">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Lets check unique values present in this data</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df.nunique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="77">
+<pre><code>Car_id           23906
+Date               612
+Customer Name     3022
+Gender               2
+Annual Income     2508
+Dealer_Name         28
+Company             30
+Model              154
+Engine               2
+Transmission         2
+Color                3
+Price ($)          870
+Dealer_No            7
+Body Style           5
+Phone            23804
+Dealer_Region        7
+dtype: int64</code></pre>
+</div>
+</div>
+<p>Observatios: * There are 3022 unique customers and 28 dealers in 7 different regions. * Also, there are 154 models of car available in 5 different body style, 2 different trasmissin type and in 3 different colours.</p>
+</section>
+<section id="step-3-exploratory-data-analysis-eda" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-exploratory-data-analysis-eda"><font color="red"> <strong>Step 3| Exploratory Data Analysis (EDA)</strong> </font></h3>
+<section id="step-3.1-data-structure" class="level5">
+<h5 class="anchored" data-anchor-id="step-3.1-data-structure">Step 3.1| <strong>Data Structure</strong></h5>
+<div id="cell-12" class="cell" data-execution_count="78">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Lets check dataset structure</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 23906 entries, 0 to 23905
+Data columns (total 16 columns):
+ #   Column         Non-Null Count  Dtype 
+---  ------         --------------  ----- 
+ 0   Car_id         23906 non-null  object
+ 1   Date           23906 non-null  object
+ 2   Customer Name  23906 non-null  object
+ 3   Gender         23906 non-null  object
+ 4   Annual Income  23906 non-null  int64 
+ 5   Dealer_Name    23906 non-null  object
+ 6   Company        23906 non-null  object
+ 7   Model          23906 non-null  object
+ 8   Engine         23906 non-null  object
+ 9   Transmission   23906 non-null  object
+ 10  Color          23906 non-null  object
+ 11  Price ($)      23906 non-null  int64 
+ 12  Dealer_No      23906 non-null  object
+ 13  Body Style     23906 non-null  object
+ 14  Phone          23906 non-null  int64 
+ 15  Dealer_Region  23906 non-null  object
+dtypes: int64(3), object(13)
+memory usage: 2.9+ MB</code></pre>
+</div>
+</div>
+<p>Obsevations: &gt; * Most Columns have object datatype</p>
+<div id="cell-14" class="cell" data-execution_count="79">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="79">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Annual Income</th>
+<th data-quarto-table-cell-role="th">Price ($)</th>
+<th data-quarto-table-cell-role="th">Phone</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">count</td>
+<td>2.390600e+04</td>
+<td>23906.000000</td>
+<td>2.390600e+04</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">mean</td>
+<td>8.308403e+05</td>
+<td>28090.247846</td>
+<td>7.497741e+06</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">std</td>
+<td>7.200064e+05</td>
+<td>14788.687608</td>
+<td>8.674920e+05</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">min</td>
+<td>1.008000e+04</td>
+<td>1200.000000</td>
+<td>6.000101e+06</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">25%</td>
+<td>3.860000e+05</td>
+<td>18001.000000</td>
+<td>6.746495e+06</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">50%</td>
+<td>7.350000e+05</td>
+<td>23000.000000</td>
+<td>7.496198e+06</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">75%</td>
+<td>1.175750e+06</td>
+<td>34000.000000</td>
+<td>8.248146e+06</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">max</td>
+<td>1.120000e+07</td>
+<td>85800.000000</td>
+<td>8.999579e+06</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-3.2-shape" class="level5">
+<h5 class="anchored" data-anchor-id="step-3.2-shape">Step 3.2| <strong>Shape</strong></h5>
+<div id="cell-16" class="cell" data-execution_count="80">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="80">
+<pre><code>(23906, 16)</code></pre>
+</div>
+</div>
+<div id="cell-17" class="cell" data-execution_count="81">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="81">
+<pre><code>Index(['Car_id', 'Date', 'Customer Name', 'Gender', 'Annual Income',
+       'Dealer_Name', 'Company', 'Model', 'Engine', 'Transmission', 'Color',
+       'Price ($)', 'Dealer_No ', 'Body Style', 'Phone', 'Dealer_Region'],
+      dtype='object')</code></pre>
+</div>
+</div>
+</section>
+<section id="step-3.3-missing-values" class="level5">
+<h5 class="anchored" data-anchor-id="step-3.3-missing-values">Step 3.3| <strong>Missing Values</strong></h5>
+<div id="cell-19" class="cell" data-execution_count="82">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df.isnull().<span class="bu">sum</span>().sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="82">
+<pre><code>Car_id           0
+Date             0
+Customer Name    0
+Gender           0
+Annual Income    0
+Dealer_Name      0
+Company          0
+Model            0
+Engine           0
+Transmission     0
+Color            0
+Price ($)        0
+Dealer_No        0
+Body Style       0
+Phone            0
+Dealer_Region    0
+dtype: int64</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Inference: There isn’t missing values present in the Dataset</p>
+</blockquote>
+</section>
+</section>
+<section id="step-3.4-data-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="step-3.4-data-analysis">Step 3.4| <strong>Data Analysis</strong></h3>
+<section id="step-3.4.1-customers" class="level5">
+<h5 class="anchored" data-anchor-id="step-3.4.1-customers">Step 3.4.1| <strong>Customers</strong></h5>
+<div id="cell-23" class="cell" data-execution_count="83">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Lets check the distribution of male and female in this dataset:</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.bar(df, x<span class="op">=</span>df[<span class="st">'Gender'</span>].unique(), y<span class="op">=</span>df[<span class="st">'Gender'</span>].value_counts(),</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>            title<span class="op">=</span><span class="st">'Gender wise Analysis'</span>, width<span class="op">=</span><span class="dv">600</span>, height<span class="op">=</span><span class="dv">400</span>,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>            text<span class="op">=</span>df[<span class="st">'Gender'</span>].value_counts(), color<span class="op">=</span>df[<span class="st">'Gender'</span>].value_counts(),</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>            color_continuous_scale<span class="op">=</span><span class="st">'Sunsetdark'</span>, labels<span class="op">=</span>{<span class="st">"x"</span>:<span class="st">"Gender"</span>, <span class="st">"y"</span>:<span class="st">"Count"</span>})</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
+</div>
+</div>
+<p><strong><em>Income Analysis Classification of incomes in Categories</em></strong></p>
+<div id="cell-25" class="cell" data-execution_count="84">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Lets create the intervals for the categories</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>bins <span class="op">=</span> np.linspace(<span class="bu">min</span>(df[<span class="st">"Annual Income"</span>]), <span class="bu">max</span>(df[<span class="st">"Annual Income"</span>]), <span class="dv">6</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>bins</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="84">
+<pre><code>array([1.008000e+04, 2.248064e+06, 4.486048e+06, 6.724032e+06,
+       8.962016e+06, 1.120000e+07])</code></pre>
+</div>
+</div>
+<div id="cell-26" class="cell" data-execution_count="85">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lets create the group names for each category</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>group_names <span class="op">=</span> [<span class="st">"Low"</span>, <span class="st">"Lower Middle"</span>, <span class="st">"Middle"</span>, <span class="st">"Upper Middle"</span>, <span class="st">"High"</span>]</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Lets Classificate the incomes in each Category</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"Annual Income (binned)"</span>] <span class="op">=</span> pd.cut(df[<span class="st">"Annual Income"</span>], bins, labels <span class="op">=</span> group_names, include_lowest<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">"Annual Income"</span>, <span class="st">"Annual Income (binned)"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="85">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Annual Income</th>
+<th data-quarto-table-cell-role="th">Annual Income (binned)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>13500</td>
+<td>Low</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1480000</td>
+<td>Low</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1035000</td>
+<td>Low</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>13500</td>
+<td>Low</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>1465000</td>
+<td>Low</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">23901</td>
+<td>13500</td>
+<td>Low</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">23902</td>
+<td>900000</td>
+<td>Low</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">23903</td>
+<td>705000</td>
+<td>Low</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">23904</td>
+<td>13500</td>
+<td>Low</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">23905</td>
+<td>1225000</td>
+<td>Low</td>
+</tr>
+</tbody>
+</table>
+
+<p>23906 rows × 2 columns</p>
+</div>
+</div>
+</div>
+</div>
+<div id="cell-27" class="cell" data-execution_count="86">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Lets check the distribution of sales for each Company</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.bar(df, x<span class="op">=</span>df[<span class="st">'Annual Income (binned)'</span>].unique(), y<span class="op">=</span>df[<span class="st">'Annual Income (binned)'</span>].value_counts(),</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>            title<span class="op">=</span><span class="st">'Annual Income (binned) wise Analysis'</span>, width<span class="op">=</span><span class="dv">600</span>, height<span class="op">=</span><span class="dv">400</span>,</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>            text<span class="op">=</span>df[<span class="st">'Annual Income (binned)'</span>].value_counts(), color<span class="op">=</span>df[<span class="st">'Annual Income (binned)'</span>].value_counts(),</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>            color_continuous_scale<span class="op">=</span><span class="st">'Sunsetdark'</span>, labels<span class="op">=</span>{<span class="st">"x"</span>:<span class="st">"Annual Income (binned)"</span>, <span class="st">"y"</span>:<span class="st">"Count"</span>})</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
+</div>
+</div>
+<p><strong><em>Outliers</em></strong></p>
+<div id="cell-29" class="cell" data-execution_count="87">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Lets check the outliers</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.box(df, y<span class="op">=</span><span class="st">'Annual Income'</span>, title<span class="op">=</span><span class="st">"Outliers Analysis"</span>,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>             width<span class="op">=</span><span class="dv">600</span>, height<span class="op">=</span><span class="dv">400</span>)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
+</div>
+</div>
+<div id="cell-30" class="cell" data-execution_count="88">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.histogram(df, x<span class="op">=</span>df[<span class="st">"Annual Income"</span>], nbins<span class="op">=</span><span class="dv">70</span>, </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>                   width<span class="op">=</span><span class="dv">600</span>, height<span class="op">=</span><span class="dv">400</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
+</div>
+</div>
+<p>Observations: &gt; * Mayority of customers have annual income between 10k to 2.4Mn</p>
+</section>
+<section id="step-3.4.2-company-analysis" class="level5">
+<h5 class="anchored" data-anchor-id="step-3.4.2-company-analysis">Step 3.4.2| <strong>Company Analysis</strong></h5>
+<p><strong><em>Dealers</em></strong></p>
+<div id="cell-34" class="cell" data-execution_count="89">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Dealer_Region'</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="89">
+<pre><code>Austin        4135
+Janesville    3821
+Scottsdale    3433
+Pasco         3131
+Aurora        3130
+Middletown    3128
+Greenville    3128
+Name: Dealer_Region, dtype: int64</code></pre>
+</div>
+</div>
+<div id="cell-35" class="cell" data-execution_count="90">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.bar(df, x<span class="op">=</span>df[<span class="st">'Dealer_Region'</span>].unique(), y<span class="op">=</span>df[<span class="st">'Dealer_Region'</span>].value_counts(),</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>            title<span class="op">=</span><span class="st">'Dealer Region wise Analysis'</span>, width<span class="op">=</span><span class="dv">600</span>, height<span class="op">=</span><span class="dv">400</span>,</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>            text<span class="op">=</span>df[<span class="st">'Dealer_Region'</span>].value_counts(), color<span class="op">=</span>df[<span class="st">'Dealer_Region'</span>].value_counts(),</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>            color_continuous_scale<span class="op">=</span><span class="st">'Sunsetdark'</span>, labels<span class="op">=</span>{<span class="st">"x"</span>:<span class="st">"Dealer_Region"</span>, <span class="st">"y"</span>:<span class="st">"Count"</span>})</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
+</div>
+</div>
+<div id="cell-36" class="cell" data-execution_count="91">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Dealer_Name'</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="91">
+<pre><code>Progressive Shippers Cooperative Association No    1318
+Rabun Used Car Sales                               1313
+Race Car Help                                      1253
+Saab-Belle Dodge                                   1251
+Star Enterprises Inc                               1249
+Tri-State Mack Inc                                 1249
+Ryder Truck Rental and Leasing                     1248
+U-Haul CO                                          1247
+Scrivener Performance Engineering                  1246
+Suburban Ford                                      1243
+Nebo Chevrolet                                      633
+Pars Auto Sales                                     630
+New Castle Ford Lincoln Mercury                     629
+McKinney Dodge Chrysler Jeep                        629
+Hatfield Volkswagen                                 629
+Gartner Buick Hyundai Saab                          628
+Pitre Buick-Pontiac-Gmc of Scottsdale               628
+Capitol KIA                                         628
+Clay Johnson Auto Sales                             627
+Iceberg Rentals                                     627
+Buddy Storbeck's Diesel Service Inc                 627
+Motor Vehicle Branch Office                         626
+Chrysler of Tri-Cities                              626
+C &amp; M Motors Inc                                    625
+Enterprise Rent A Car                               625
+Chrysler Plymouth                                   625
+Diehl Motor CO Inc                                  624
+Classic Chevy                                       623
+Name: Dealer_Name, dtype: int64</code></pre>
+</div>
+</div>
+<p><strong><em>Company</em></strong></p>
+<div id="cell-38" class="cell" data-execution_count="92">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Company'</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="92">
+<pre><code>Chevrolet     1819
+Dodge         1671
+Ford          1614
+Volkswagen    1333
+Mercedes-B    1285
+Mitsubishi    1277
+Chrysler      1120
+Oldsmobile    1111
+Toyota        1110
+Nissan         886
+Mercury        874
+Lexus          802
+Pontiac        796
+BMW            790
+Volvo          789
+Honda          708
+Acura          689
+Cadillac       652
+Plymouth       617
+Saturn         586
+Lincoln        492
+Audi           468
+Buick          439
+Subaru         405
+Jeep           363
+Porsche        361
+Hyundai        264
+Saab           210
+Infiniti       195
+Jaguar         180
+Name: Company, dtype: int64</code></pre>
+</div>
+</div>
+<div id="cell-39" class="cell" data-execution_count="93">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Lets see the distribution of sales for each Company</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>company_total_sales <span class="op">=</span> df.groupby([<span class="st">"Company"</span>]).size().sort_values(ascending<span class="op">=</span><span class="va">False</span>).reset_index()</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>company_total_sales.rename(columns<span class="op">=</span>{<span class="dv">0</span>:<span class="st">"Company Sales"</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.bar(df, x<span class="op">=</span>df[<span class="st">'Company'</span>].unique(), y<span class="op">=</span>df[<span class="st">'Company'</span>].value_counts(),</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>            title<span class="op">=</span><span class="st">'Company wise Analysis'</span>, width<span class="op">=</span><span class="dv">600</span>, height<span class="op">=</span><span class="dv">400</span>,</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>            text<span class="op">=</span>df[<span class="st">'Company'</span>].value_counts(), color<span class="op">=</span>df[<span class="st">'Company'</span>].value_counts(),</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>            color_continuous_scale<span class="op">=</span><span class="st">'Sunsetdark'</span>, labels<span class="op">=</span>{<span class="st">"x"</span>:<span class="st">"Company"</span>, <span class="st">"y"</span>:<span class="st">"Count"</span>})</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
+</div>
+</div>
+</section>
+<section id="step-3.4.3-product-analysis-cars-models-body-style" class="level5">
+<h5 class="anchored" data-anchor-id="step-3.4.3-product-analysis-cars-models-body-style">Step 3.4.3| <strong>Product Analysis (Cars, Models, Body style, …)</strong></h5>
+<div id="cell-41" class="cell" data-execution_count="94">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.bar(df, x<span class="op">=</span>df[<span class="st">'Body Style'</span>].unique(), y<span class="op">=</span>df[<span class="st">'Body Style'</span>].value_counts(),</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>            title<span class="op">=</span><span class="st">'Body Style wise Analysis'</span>, width<span class="op">=</span><span class="dv">600</span>, height<span class="op">=</span><span class="dv">400</span>,</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>            text<span class="op">=</span>df[<span class="st">'Body Style'</span>].value_counts(), color<span class="op">=</span>df[<span class="st">'Body Style'</span>].value_counts(),</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>            color_continuous_scale<span class="op">=</span><span class="st">'Sunsetdark'</span>, labels<span class="op">=</span>{<span class="st">"x"</span>:<span class="st">"Body Style"</span>, <span class="st">"y"</span>:<span class="st">"Count"</span>})</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
+</div>
+</div>
+<div id="cell-42" class="cell" data-execution_count="95">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Transmission'</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="95">
+<pre><code>Auto      12571
+Manual    11335
+Name: Transmission, dtype: int64</code></pre>
+</div>
+</div>
+<div id="cell-43" class="cell" data-execution_count="96">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.bar(df, x<span class="op">=</span>df[<span class="st">'Transmission'</span>].unique(), y<span class="op">=</span>df[<span class="st">'Transmission'</span>].value_counts(),</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>            title<span class="op">=</span><span class="st">'Transmission wise Analysis'</span>, width<span class="op">=</span><span class="dv">600</span>, height<span class="op">=</span><span class="dv">400</span>,</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>            text<span class="op">=</span>df[<span class="st">'Transmission'</span>].value_counts(), color<span class="op">=</span>df[<span class="st">'Transmission'</span>].value_counts(),</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>            color_continuous_scale<span class="op">=</span><span class="st">'Sunsetdark'</span>, labels<span class="op">=</span>{<span class="st">"x"</span>:<span class="st">"Company"</span>, <span class="st">"y"</span>:<span class="st">"Count"</span>})</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
+</div>
+</div>
+<div id="cell-44" class="cell" data-execution_count="97">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Model'</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="97">
+<pre><code>Diamante         418
+Silhouette       411
+Prizm            411
+Passat           391
+Ram Pickup       383
+                ... 
+Mirage            19
+Alero             18
+RX300             15
+Avalon            15
+Sebring Conv.     10
+Name: Model, Length: 154, dtype: int64</code></pre>
+</div>
+</div>
+<div id="cell-45" class="cell" data-execution_count="98">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">#lets check the top 10 Models</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>top_10_models <span class="op">=</span> df[<span class="st">'Model'</span>].value_counts().nlargest(<span class="dv">10</span>)</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.bar(top_10_models, x<span class="op">=</span>top_10_models.index, y<span class="op">=</span>top_10_models.values,</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>            title<span class="op">=</span><span class="st">'Top 10 Models wise Analysis'</span>, width<span class="op">=</span><span class="dv">600</span>, height<span class="op">=</span><span class="dv">400</span>,</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>            text<span class="op">=</span>top_10_models.values, color<span class="op">=</span>top_10_models.values,</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>            color_continuous_scale<span class="op">=</span><span class="st">'Sunsetdark'</span>, labels<span class="op">=</span>{<span class="st">"x"</span>:<span class="st">"Model"</span>, <span class="st">"y"</span>:<span class="st">"Count"</span>})</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
+</div>
+</div>
+</section>
+<section id="step-3.4.4-sales-analysis" class="level5">
+<h5 class="anchored" data-anchor-id="step-3.4.4-sales-analysis">Step 3.4.4| <strong>Sales Analysis</strong></h5>
+<div id="cell-47" class="cell" data-execution_count="99">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Price ($)'</span>].describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="99">
+<pre><code>count    23906.000000
+mean     28090.247846
+std      14788.687608
+min       1200.000000
+25%      18001.000000
+50%      23000.000000
+75%      34000.000000
+max      85800.000000
+Name: Price ($), dtype: float64</code></pre>
+</div>
+</div>
+<div id="cell-48" class="cell" data-execution_count="100">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'The Mode of Price ($) is:'</span>, df[<span class="st">'Price ($)'</span>].mode()[<span class="dv">0</span>])</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'The Mean of Price ($) is:'</span>, df[<span class="st">'Price ($)'</span>].mean())</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'The Median of Price ($) is:'</span>, df[<span class="st">'Price ($)'</span>].median())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The Mode of Price ($) is: 22000
+The Mean of Price ($) is: 28090.247845729107
+The Median of Price ($) is: 23000.0</code></pre>
+</div>
+</div>
+<div id="cell-49" class="cell" data-execution_count="101">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Lets create the intervals for the categories</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>bins_price <span class="op">=</span> np.linspace(<span class="bu">min</span>(df[<span class="st">"Price ($)"</span>]), <span class="bu">max</span>(df[<span class="st">"Price ($)"</span>]), <span class="dv">6</span>)</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>bins</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="101">
+<pre><code>array([1.008000e+04, 2.248064e+06, 4.486048e+06, 6.724032e+06,
+       8.962016e+06, 1.120000e+07])</code></pre>
+</div>
+</div>
+<div id="cell-50" class="cell" data-execution_count="102">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lets create the group names for each category</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>group_names <span class="op">=</span> [<span class="st">"Low"</span>, <span class="st">"Lower Middle"</span>, <span class="st">"Middle"</span>, <span class="st">"Upper Middle"</span>, <span class="st">"High"</span>]</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>df_prices <span class="op">=</span> df[[<span class="st">'Price ($)'</span>]]</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Lets Classificate the incomes in each Category</span></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>df_prices[<span class="st">"Price (binned)"</span>] <span class="op">=</span> pd.cut(df_prices[<span class="st">"Price ($)"</span>], bins_price, labels <span class="op">=</span> group_names, include_lowest<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>df_prices</span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="102">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Price ($)</th>
+<th data-quarto-table-cell-role="th">Price (binned)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>26000</td>
+<td>Lower Middle</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>19000</td>
+<td>Lower Middle</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>31500</td>
+<td>Lower Middle</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>14000</td>
+<td>Low</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>24500</td>
+<td>Lower Middle</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">23901</td>
+<td>12000</td>
+<td>Low</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">23902</td>
+<td>16000</td>
+<td>Low</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">23903</td>
+<td>21000</td>
+<td>Lower Middle</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">23904</td>
+<td>31000</td>
+<td>Lower Middle</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">23905</td>
+<td>27500</td>
+<td>Lower Middle</td>
+</tr>
+</tbody>
+</table>
+
+<p>23906 rows × 2 columns</p>
+</div>
+</div>
+</div>
+</div>
+<div id="cell-51" class="cell" data-execution_count="103">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Lets check the distribution of sales for each Company</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.bar(df_prices, x<span class="op">=</span>df_prices[<span class="st">'Price (binned)'</span>].unique(), y<span class="op">=</span>df_prices[<span class="st">'Price (binned)'</span>].value_counts(),</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>            title<span class="op">=</span><span class="st">'Price (binned) wise Analysis'</span>, width<span class="op">=</span><span class="dv">600</span>, height<span class="op">=</span><span class="dv">400</span>,</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>            text<span class="op">=</span>df_prices[<span class="st">'Price (binned)'</span>].value_counts(), color<span class="op">=</span>df_prices[<span class="st">'Price (binned)'</span>].value_counts(),</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>            color_continuous_scale<span class="op">=</span><span class="st">'Sunsetdark'</span>, labels<span class="op">=</span>{<span class="st">"x"</span>:<span class="st">"Price (binned)"</span>, <span class="st">"y"</span>:<span class="st">"Count"</span>})</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
+</div>
+</div>
+<div id="cell-52" class="cell" data-execution_count="104">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.histogram(df, x<span class="op">=</span>df_prices[<span class="st">"Price ($)"</span>], nbins<span class="op">=</span><span class="dv">70</span>, </span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>                   width<span class="op">=</span><span class="dv">600</span>, height<span class="op">=</span><span class="dv">400</span>)</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
+</div>
+</div>
+<div id="cell-53" class="cell" data-execution_count="105">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Lets check correlation between Company and average price they are selling at</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>company_avg <span class="op">=</span> df.groupby([<span class="st">'Company'</span>])[<span class="st">'Price ($)'</span>].mean().sort_values(ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">15</span>).reset_index()</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>sns.lineplot(x<span class="op">=</span><span class="st">'Company'</span>, y<span class="op">=</span><span class="st">'Price ($)'</span>, data<span class="op">=</span>company_avg)</span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">90</span>)</span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Correlation between Company and Average Price'</span>)  <span class="co"># Título del gráfico</span></span>
+<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="EDA_ML_files/figure-html/cell-32-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-54" class="cell" data-execution_count="106">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lets check the relation between Price and Transmission</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.scatter(df, x<span class="op">=</span><span class="st">'Price ($)'</span>, y<span class="op">=</span><span class="st">'Transmission'</span>, color<span class="op">=</span><span class="st">'Price ($)'</span>,</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>                 title<span class="op">=</span><span class="st">'Price &amp; Transmission Analysis'</span>,  width<span class="op">=</span><span class="dv">600</span>, height<span class="op">=</span><span class="dv">400</span>,</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>                 color_continuous_scale<span class="op">=</span><span class="st">'Sunsetdark'</span>)</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Muestra la figura</span></span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
+</div>
+</div>
+<div id="cell-55" class="cell" data-execution_count="107">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>sns.kdeplot(data<span class="op">=</span>df,x<span class="op">=</span><span class="st">'Price ($)'</span>,hue<span class="op">=</span><span class="st">'Body Style'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="EDA_ML_files/figure-html/cell-34-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-56" class="cell" data-execution_count="108">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.box(df, y<span class="op">=</span><span class="st">'Company'</span>, x<span class="op">=</span><span class="st">'Price ($)'</span>, color<span class="op">=</span><span class="st">'Company'</span>,</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>             width<span class="op">=</span><span class="dv">600</span>, height<span class="op">=</span><span class="dv">400</span>,</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>             title<span class="op">=</span><span class="st">'Distribution of Price and Compay'</span>)</span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
+</div>
+</div>
+<div id="cell-57" class="cell" data-execution_count="109">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>df_no_phone <span class="op">=</span> df.drop(columns<span class="op">=</span><span class="st">'Phone'</span>)</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>sns.heatmap(df_no_phone.corr(numeric_only<span class="op">=</span><span class="va">True</span>),annot<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="EDA_ML_files/figure-html/cell-36-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Observations: * Automatic and manual cars have similar prices, but some automatic cars have a wider upper price range than manual cars. * The correlation of 0.012 between price and annual income suggests a very weak positive relationship. * The majority of sales are from cars priced between $12,000 and $34,000, with SUVs, hatchbacks, and sedans being the most sold body styles within this range.</p>
+</section>
+</section>
+<section id="step-4-predictive-model" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-predictive-model"><strong>Step 4| Predictive Model</strong></h3>
+<section id="step-4.1-dummies-variables" class="level5">
+<h5 class="anchored" data-anchor-id="step-4.1-dummies-variables">Step 4.1| <strong>Dummies Variables</strong></h5>
+<div id="cell-61" class="cell" data-execution_count="110">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>le <span class="op">=</span> LabelEncoder()</span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>col_list <span class="op">=</span> [<span class="st">'Gender'</span>, <span class="st">'Model'</span>, <span class="st">'Dealer_Name'</span>, <span class="st">'Company'</span>, <span class="st">'Engine'</span>, <span class="st">'Transmission'</span>, <span class="st">'Color'</span>, <span class="st">'Body Style'</span>, <span class="st">'Dealer_Region'</span>]</span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> colsn <span class="kw">in</span> col_list:</span>
+<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a>    df[colsn] <span class="op">=</span> le.fit_transform(df[colsn].astype(<span class="bu">str</span>))</span>
+<span id="cb63-10"><a href="#cb63-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-11"><a href="#cb63-11" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="110">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Car_id</th>
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Customer Name</th>
+<th data-quarto-table-cell-role="th">Gender</th>
+<th data-quarto-table-cell-role="th">Annual Income</th>
+<th data-quarto-table-cell-role="th">Dealer_Name</th>
+<th data-quarto-table-cell-role="th">Company</th>
+<th data-quarto-table-cell-role="th">Model</th>
+<th data-quarto-table-cell-role="th">Engine</th>
+<th data-quarto-table-cell-role="th">Transmission</th>
+<th data-quarto-table-cell-role="th">Color</th>
+<th data-quarto-table-cell-role="th">Price ($)</th>
+<th data-quarto-table-cell-role="th">Dealer_No</th>
+<th data-quarto-table-cell-role="th">Body Style</th>
+<th data-quarto-table-cell-role="th">Phone</th>
+<th data-quarto-table-cell-role="th">Dealer_Region</th>
+<th data-quarto-table-cell-role="th">Annual Income (binned)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>C_CND_000001</td>
+<td>1/2/2022</td>
+<td>Geraldine</td>
+<td>1</td>
+<td>13500</td>
+<td>0</td>
+<td>8</td>
+<td>60</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>26000</td>
+<td>06457-3834</td>
+<td>3</td>
+<td>8264678</td>
+<td>4</td>
+<td>Low</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>C_CND_000002</td>
+<td>1/2/2022</td>
+<td>Gia</td>
+<td>1</td>
+<td>1480000</td>
+<td>1</td>
+<td>7</td>
+<td>52</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>19000</td>
+<td>60504-7114</td>
+<td>3</td>
+<td>6848189</td>
+<td>0</td>
+<td>Low</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>C_CND_000003</td>
+<td>1/2/2022</td>
+<td>Gianna</td>
+<td>1</td>
+<td>1035000</td>
+<td>2</td>
+<td>4</td>
+<td>57</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>31500</td>
+<td>38701-8047</td>
+<td>2</td>
+<td>7298798</td>
+<td>2</td>
+<td>Low</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>C_CND_000004</td>
+<td>1/2/2022</td>
+<td>Giselle</td>
+<td>1</td>
+<td>13500</td>
+<td>4</td>
+<td>27</td>
+<td>36</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>14000</td>
+<td>99301-3882</td>
+<td>3</td>
+<td>6257557</td>
+<td>5</td>
+<td>Low</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>C_CND_000005</td>
+<td>1/2/2022</td>
+<td>Grace</td>
+<td>1</td>
+<td>1465000</td>
+<td>3</td>
+<td>0</td>
+<td>141</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>24500</td>
+<td>53546-9427</td>
+<td>1</td>
+<td>7081483</td>
+<td>3</td>
+<td>Low</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-4.2-dates" class="level5">
+<h5 class="anchored" data-anchor-id="step-4.2-dates">Step 4.2 <strong>Dates</strong></h5>
+<div id="cell-63" class="cell" data-execution_count="111">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">'month'</span>, <span class="st">'day'</span>, <span class="st">'year'</span>]] <span class="op">=</span> df[<span class="st">'Date'</span>].<span class="bu">str</span>.split(<span class="st">'/'</span>, n<span class="op">=</span><span class="dv">2</span>, expand<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="111">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Car_id</th>
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Customer Name</th>
+<th data-quarto-table-cell-role="th">Gender</th>
+<th data-quarto-table-cell-role="th">Annual Income</th>
+<th data-quarto-table-cell-role="th">Dealer_Name</th>
+<th data-quarto-table-cell-role="th">Company</th>
+<th data-quarto-table-cell-role="th">Model</th>
+<th data-quarto-table-cell-role="th">Engine</th>
+<th data-quarto-table-cell-role="th">Transmission</th>
+<th data-quarto-table-cell-role="th">Color</th>
+<th data-quarto-table-cell-role="th">Price ($)</th>
+<th data-quarto-table-cell-role="th">Dealer_No</th>
+<th data-quarto-table-cell-role="th">Body Style</th>
+<th data-quarto-table-cell-role="th">Phone</th>
+<th data-quarto-table-cell-role="th">Dealer_Region</th>
+<th data-quarto-table-cell-role="th">Annual Income (binned)</th>
+<th data-quarto-table-cell-role="th">month</th>
+<th data-quarto-table-cell-role="th">day</th>
+<th data-quarto-table-cell-role="th">year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>C_CND_000001</td>
+<td>1/2/2022</td>
+<td>Geraldine</td>
+<td>1</td>
+<td>13500</td>
+<td>0</td>
+<td>8</td>
+<td>60</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>26000</td>
+<td>06457-3834</td>
+<td>3</td>
+<td>8264678</td>
+<td>4</td>
+<td>Low</td>
+<td>1</td>
+<td>2</td>
+<td>2022</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>C_CND_000002</td>
+<td>1/2/2022</td>
+<td>Gia</td>
+<td>1</td>
+<td>1480000</td>
+<td>1</td>
+<td>7</td>
+<td>52</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>19000</td>
+<td>60504-7114</td>
+<td>3</td>
+<td>6848189</td>
+<td>0</td>
+<td>Low</td>
+<td>1</td>
+<td>2</td>
+<td>2022</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>C_CND_000003</td>
+<td>1/2/2022</td>
+<td>Gianna</td>
+<td>1</td>
+<td>1035000</td>
+<td>2</td>
+<td>4</td>
+<td>57</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>31500</td>
+<td>38701-8047</td>
+<td>2</td>
+<td>7298798</td>
+<td>2</td>
+<td>Low</td>
+<td>1</td>
+<td>2</td>
+<td>2022</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>C_CND_000004</td>
+<td>1/2/2022</td>
+<td>Giselle</td>
+<td>1</td>
+<td>13500</td>
+<td>4</td>
+<td>27</td>
+<td>36</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>14000</td>
+<td>99301-3882</td>
+<td>3</td>
+<td>6257557</td>
+<td>5</td>
+<td>Low</td>
+<td>1</td>
+<td>2</td>
+<td>2022</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>C_CND_000005</td>
+<td>1/2/2022</td>
+<td>Grace</td>
+<td>1</td>
+<td>1465000</td>
+<td>3</td>
+<td>0</td>
+<td>141</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>24500</td>
+<td>53546-9427</td>
+<td>1</td>
+<td>7081483</td>
+<td>3</td>
+<td>Low</td>
+<td>1</td>
+<td>2</td>
+<td>2022</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-4.3-model" class="level5">
+<h5 class="anchored" data-anchor-id="step-4.3-model">Step 4.3 <strong>Model</strong></h5>
+<div id="cell-65" class="cell" data-execution_count="112">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestRegressor</span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>model_df <span class="op">=</span> df[[<span class="st">'Gender'</span>, <span class="st">'Model'</span>, <span class="st">'Annual Income'</span>, <span class="st">'Dealer_Name'</span>, <span class="st">'Company'</span>, <span class="st">'Engine'</span>, <span class="st">'Transmission'</span>, <span class="st">'Color'</span>, <span class="st">'Body Style'</span>, <span class="st">'Dealer_Region'</span>, <span class="st">'month'</span>, <span class="st">'day'</span>, <span class="st">'year'</span>, <span class="st">'Price ($)'</span>]]</span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Variables definition</span></span>
+<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> model_df[[<span class="st">'Gender'</span>, <span class="st">'Model'</span>, <span class="st">'Engine'</span>, <span class="st">'Transmission'</span>, <span class="st">'Company'</span>, <span class="st">'Color'</span>, <span class="st">'Body Style'</span>, <span class="st">'Dealer_Region'</span>]]</span>
+<span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> model_df[[<span class="st">'Price ($)'</span>]]</span>
+<span id="cb65-9"><a href="#cb65-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-10"><a href="#cb65-10" aria-hidden="true" tabindex="-1"></a><span class="co">#Train</span></span>
+<span id="cb65-11"><a href="#cb65-11" aria-hidden="true" tabindex="-1"></a>x_train, x_test, y_train, y_test <span class="op">=</span> train_test_split(x,y, test_size<span class="op">=</span><span class="fl">0.25</span>, random_state<span class="op">=</span><span class="dv">2203</span>)</span>
+<span id="cb65-12"><a href="#cb65-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-13"><a href="#cb65-13" aria-hidden="true" tabindex="-1"></a><span class="co">#Test</span></span>
+<span id="cb65-14"><a href="#cb65-14" aria-hidden="true" tabindex="-1"></a>rf_tree <span class="op">=</span> RandomForestRegressor(n_estimators<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb65-15"><a href="#cb65-15" aria-hidden="true" tabindex="-1"></a>rf_tree <span class="op">=</span> rf_tree.fit(x_train, y_train)</span>
+<span id="cb65-16"><a href="#cb65-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-17"><a href="#cb65-17" aria-hidden="true" tabindex="-1"></a>score <span class="op">=</span> rf_tree.score(x_test, y_test)</span>
+<span id="cb65-18"><a href="#cb65-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-19"><a href="#cb65-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"RandomForestRegressor r2 score is:"</span>, <span class="bu">str</span>(score))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>RandomForestRegressor r2 score is: 0.6215918313822122</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
