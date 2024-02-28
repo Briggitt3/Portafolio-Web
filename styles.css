@@ -116,7 +116,7 @@ section {
 
 .home-content .text-animate {
     position: relative;
-    width: 22rem;
+    width: 34rem;
 }
 
 .home-content .text-animate h3 {
@@ -127,7 +127,7 @@ section {
     background-image: linear-gradient(var(--main-color), var(--main-color));
     background-repeat: no-repeat;
     -webkit-background-clip: text;
-    background-position: -22rem 0;
+    background-position: -34rem 0;
     animation: homeBgText 6s linear infinite;
     animation-delay: 2s;
 }
@@ -600,27 +600,27 @@ span {
 }
 
 .skills-column:nth-child(1) .skills-content .progress:nth-child(3) .bar span {
-    width: 65%;
+    width: 75%;
 }
 
 .skills-column:nth-child(1) .skills-content .progress:nth-child(4) .bar span {
-    width: 75%;
-}
-
-.skills-column:nth-child(2) .skills-content .progress:nth-child(1) .bar span {
-    width: 90%;
-}
-
-.skills-column:nth-child(2) .skills-content .progress:nth-child(2) .bar span {
     width: 80%;
 }
 
-.skills-column:nth-child(2) .skills-content .progress:nth-child(3) .bar span {
+.skills-column:nth-child(2) .skills-content .progress:nth-child(1) .bar span {
     width: 65%;
 }
 
-.skills-column:nth-child(2) .skills-content .progress:nth-child(4) .bar span {
+.skills-column:nth-child(2) .skills-content .progress:nth-child(2) .bar span {
+    width: 90%;
+}
+
+.skills-column:nth-child(2) .skills-content .progress:nth-child(3) .bar span {
     width: 75%;
+}
+
+.skills-column:nth-child(2) .skills-content .progress:nth-child(4) .bar span {
+    width: 70%;
 }
 
 .contact {
@@ -997,7 +997,7 @@ section:nth-child(odd) .animate.scroll,
     0%,
     10%,
     100% {
-        background-position: -22rem 0;
+        background-position: -34rem 0;
     }
 
     65%,
