@@ -817,6 +817,8 @@ section:nth-child(odd) .animate.scroll,
     .home-sci {
         width: 200px;
     }
+
+
     .home-sci a{
         width: 80px;
         height: 80px;
@@ -987,6 +989,83 @@ section:nth-child(odd) .animate.scroll,
 
     .home-content h1 {
         font-size: 3.5rem;
+    }
+}
+
+
+
+/* @media only screen and (orientation: landscape) and (hover: none) and (pointer: coarse) {
+    html {
+      font-size: 50%;
+    }
+
+    .home {
+        min-height: 150vh;
+        position: relative;
+    }
+
+    .home-sci {
+        width: 110px;
+    }
+
+    .home-sci a {
+        width: 40px;
+        height: 40px;
+        font-size: 3.5rem;
+    }
+ } */
+
+ /* Estilos para teléfonos móviles */
+@media only screen and (max-width: 600px) and (orientation:landspace) {
+    html {
+        font-size: 50%;
+      }
+  
+      .home {
+          min-height: 150vh;
+          position: relative;
+      }
+  
+      .home-sci {
+          width: 110px;
+      }
+  
+      .home-sci a {
+          width: 40px;
+          height: 40px;
+          font-size: 3.5rem;
+      }
+   }
+  
+  
+
+/* Estilos para tablets */
+@media only screen and (min-height: 601px) and (max-height: 991px) and (orientation: landscape){
+    .home {
+        height: 150vh;
+        position: relative;
+    }
+
+}
+
+@media only screen and (min-height: 300px) and (max-height: 600px) {
+    html {
+        font-size: 50%;
+    }
+    
+    .home {
+        height: 150vh;
+        position: relative;
+    }
+
+    .home-sci {
+        width: 120px;
+    }
+
+    .home-sci a {
+        font-size: 34px;
+        width: 50px;
+        height: 50px;
     }
 }
 
