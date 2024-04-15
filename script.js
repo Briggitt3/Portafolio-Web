@@ -52,3 +52,18 @@ window.onscroll = () => {
     footer.classList.toggle('show-animate', this.innerHeight + this.scrollY >= document.scrollingElement.scrollHeight);
 }
 
+const imagenes = ['images/OIG1..jpg', 'images/OIG1.jpg', 'images/OIG1.RMiHeIfB.jpg', 'images/OIG4(1).jpg', 'images/OIG4(2).jpg', 'images/OIG4.jpg'];
+    let indice = 0;
+
+    function cambiarImagen() {
+        const elemento = document.getElementById('avatar');
+        elemento.style.opacity = 0; // Desvanece la imagen actual
+        setTimeout(() => {
+            elemento.src = imagenes[indice]; // Cambia la imagen
+            elemento.style.opacity = 1; // Hace visible la nueva imagen
+            indice = (indice + 1) % imagenes.length;
+        }, 200); // Espera 2 segundos antes de cambiar a la siguiente imagen
+    }
+
+    setInterval(cambiarImagen, 5000); // Cambia cada 5 segundos
+
