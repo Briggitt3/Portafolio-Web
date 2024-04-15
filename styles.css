@@ -100,6 +100,20 @@ section {
     background-position: center; */
 }
 
+.imagen {
+    display: flex;
+    width: 50vw;
+    margin-left: 25px;
+    justify-content: end;
+}
+
+.avatar {
+    width: 40vw;
+    height: 40vw; 
+    border-radius: 50%;
+    opacity: 1; /* Inicialmente, la imagen es completamente visible */
+    transition: opacity 0.2s ease; /* Cambia la opacidad durante 2 segundos */
+}
 
 .home-content {
     max-width: 60rem;
@@ -120,7 +134,7 @@ section {
 
 .home-content .text-animate {
     position: relative;
-    width: 34rem;
+    width: 30.5rem;
 }
 
 .home-content .text-animate h3 {
@@ -288,8 +302,8 @@ section {
 /* .home-imgHover:hover {
     background: var(--bg-color);
     opacity: .8;
-} */
-
+}
+ */
 /* .home-content .graphics {
     position: relative;
     display: grid;
@@ -1000,7 +1014,6 @@ section:nth-child(odd) .animate.scroll,
         width: 200px;
     }
 
-
     .home-sci a{
         width: 80px;
         height: 80px;
@@ -1022,6 +1035,7 @@ section:nth-child(odd) .animate.scroll,
         padding: 0 4%;
     }
 
+
     .footer {
         padding: 2rem 4%;
     }
@@ -1030,6 +1044,11 @@ section:nth-child(odd) .animate.scroll,
 @media (max-width: 850px) {
     .animate.home-img {
         width: 55%;
+    }
+
+    .avatar{
+        width: 0;
+        height: 0;
     }
 }
 
@@ -1054,6 +1073,8 @@ section:nth-child(odd) .animate.scroll,
         transition: .25s ease;
         transition-delay: .25s;
     }
+
+    
 
     .navbar.active {
         left: 0;
@@ -1121,6 +1142,7 @@ section:nth-child(odd) .animate.scroll,
 }
 
 @media (max-width: 462px) {
+
     .home-content h1 {
         font-size: 3.5rem;
     }
@@ -1228,6 +1250,11 @@ section:nth-child(odd) .animate.scroll,
         position: relative;
     }
 
+    .avatar{
+        width: 0;
+        height: 0;
+    }
+
 }
 
 @media only screen and (min-height: 601px) and (max-height: 800px) /* and (max-width:400px) */ and (orientation: landscape){
@@ -1236,13 +1263,18 @@ section:nth-child(odd) .animate.scroll,
         position: relative;
     }
 
+    .avatar{
+        width: 0;
+        height: 0;
+    }
+
 }
 
 @media only screen and (min-height: 300px) and (max-height: 600px)/*  and (orientation: landascape) */{
     html {
         font-size: 50%;
     }
-    
+
     .home {
         height: 150vh;
         position: relative;
@@ -1266,7 +1298,7 @@ section:nth-child(odd) .animate.scroll,
     0%,
     10%,
     100% {
-        background-position: -34rem 0;
+        background-position: -30.5rem 0;
     }
 
     65%,
