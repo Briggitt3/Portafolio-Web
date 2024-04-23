@@ -1005,6 +1005,12 @@ section:nth-child(odd) .animate.scroll,
 }
 
 /* Breacpoints */
+@media (max-width: 1250px){
+    .home-content h1 {
+        font-size: 3rem;
+    }
+}
+
 @media (max-width: 1200px) {
     html {
         font-size: 80%;
@@ -1049,6 +1055,25 @@ section:nth-child(odd) .animate.scroll,
     .avatar{
         width: 0;
         height: 0;
+    }
+}
+
+@media (max-width: 850px) {
+    #menu-icon {
+        display: block;
+    }
+
+    .navbar {
+        position: absolute;
+        top: 100%;
+        left: -100%;
+        width: 100%;
+        padding: 1rem 4%;
+        background: var(--main-color);
+        box-shadow: 0 .5rem 1rem rgb(0, 0, 0, .2);
+        z-index: 1;
+        transition: .25s ease;
+        transition-delay: .25s;
     }
 }
 
