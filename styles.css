@@ -502,6 +502,10 @@ span {
     margin: 2rem 0 3rem;
 }
 
+.about a {
+    color: var(--main-color);
+}
+
 .btn-box.btns {
     display: inline-block;
     width: 15rem;
@@ -607,6 +611,7 @@ span {
     min-height: 100%vh;
     padding-bottom: 5rem;
 }
+
 
 .education .education-row {
     display: flex;
