@@ -1305,7 +1305,7 @@ section:nth-child(odd) .animate.scroll,
   
 
 /* Estilos para tablets */
-@media only screen and (min-height: 801px) and (max-height: 991px) and /* (max-width:400px) */ and (orientation: landscape){
+@media only screen and (min-height: 801px) and (max-height: 991px) and /* (max-width:400px) */ (orientation: landscape){
     .home {
         height: 130vh;
         position: relative;
