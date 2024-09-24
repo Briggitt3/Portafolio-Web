@@ -1342,7 +1342,7 @@ section:nth-child(odd) .animate.scroll,
     }
 
     .home {
-        height: 130vh;
+        height: 110vh;
         position: relative;
     }
 
