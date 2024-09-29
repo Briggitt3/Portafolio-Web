@@ -380,6 +380,16 @@ section {
     color: var(--second-text-color)
 }
 
+.about-content a {
+    color: var(--second-main-color) !important;
+    text-decoration-line: underline;
+    font-weight: 800;
+}
+
+.about-content a:hover {
+    color: white !important;
+}
+
 .heading {
     position: relative;
     font-size: 5rem;
@@ -1309,7 +1319,7 @@ section:nth-child(odd) .animate.scroll,
   
 
 /* Estilos para tablets */
-@media only screen and (min-height: 801px) and (max-height: 980px) and /* (max-width:400px) */ (orientation: landscape){
+@media only screen and (min-height: 801px) and (max-height: 900px) and /* (max-width:400px) */ (orientation: landscape){
     
     .home {
         height: 130vh;
