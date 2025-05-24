@@ -141,10 +141,10 @@ section {
 .home-content h1 span {
     color: var(--text-color);
 }
-
+ 
 .home-content .text-animate {
     position: relative;
-    width: 30.5rem;
+    width: 45rem;
     
 }
 
@@ -1374,7 +1374,7 @@ section:nth-child(odd) .animate.scroll,
     0%,
     10%,
     100% {
-        background-position: -30.5rem 0;
+        background-position: -45rem 0;
     }
 
     65%,
